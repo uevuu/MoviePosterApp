@@ -55,8 +55,8 @@ enum TypeEnum: String, Codable {
 }
 
 enum TypeTop: String {
-    case TopAwaitFilms = "TOP_AWAIT_FILMS"
-    case TopBestfilms = "TOP_250_BEST_FILMS"
-    case TopPopularFilms = "TOP_100_POPULAR_FILMS"
+    case topAwaitFilms = "TOP_AWAIT_FILMS"
+    case topBestfilms = "TOP_250_BEST_FILMS"
+    case topPopularFilms = "TOP_100_POPULAR_FILMS"
 }
 
