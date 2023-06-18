@@ -1,19 +1,25 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
-
-
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = TabBarViewController()
-//        let coordinator: AppCoordinator = .shared
-//        coordinator.window = window
-//        coordinator.start()
+    private var rootCoordinator: RootCoordinator?
+    private var serviceLocator: ServiceLocator?
+    
+    func scene(
+        _ scene: UIScene,
+        willConnectTo session: UISceneSession,
+        options connectionOptions: UIScene.ConnectionOptions
+    ) {
+        guard let scene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: scene)
+//        let serviceLocator = ServiceLocator()
+        let tabBarBuilder = TabBarBuilder()
+        window.rootViewController = tabBarBuilder.build()
         window.makeKeyAndVisible()
         self.window = window
+//        self.serviceLocator = serviceLocator
+//        self.rootCoordinator = RootCoordinator(window: window, resolver: serviceLocator.getResolver())
+//        rootCoordinator?.start(animated: true)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -31,7 +37,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidEnterBackground(_ scene: UIScene) {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
-
-
 }
-

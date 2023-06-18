@@ -9,7 +9,5 @@ target 'MoviePosterApp' do
 	pod 'SnapKit', '~> 5.0.0'
 	pod 'SwiftLint', '~> 0.46.2'
 	pod 'Alamofire'
-	pod 'Moya', '~> 15.0'
 	pod 'Swinject'
-
 end

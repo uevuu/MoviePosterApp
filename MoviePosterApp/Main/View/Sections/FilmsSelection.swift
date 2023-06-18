@@ -1,0 +1,43 @@
+//
+//  FilmsSelection.swift
+//  MoviePosterApp
+//
+//  Created by Nikita Marin on 18.06.2023.
+//
+
+import UIKit
+
+// MARK: - FilmsSelection
+final class FilmsSelection: Section {
+    func layoutSection() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(0.95),
+                heightDimension: .fractionalHeight(0.95)
+            )
+        )
+        
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(0.4),
+                heightDimension: .fractionalHeight(0.24)
+            ),
+            repeatingSubitem: item,
+            count: 1)
+        
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .estimated(44)
+            ),
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.boundarySupplementaryItems = [header]
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        return section
+    }
+}

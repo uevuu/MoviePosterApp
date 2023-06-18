@@ -1,3 +1,10 @@
+//
+//  Premieres.swift
+//  MoviePosterApp
+//
+//  Created by Nikita Marin on 12.06.2023.
+//
+
 import Foundation
 
 struct Premieres: Codable {
@@ -6,18 +13,11 @@ struct Premieres: Codable {
 }
 
 struct Premiere: Codable {
-    let filmId: Int
-    let nameRu: String
-    let genres: [Genre]
-    let data: String
-    let posterURLPreview: String
-    
-    enum CodingKeys: String, CodingKey {
-        case filmId = "kinopoiskId"
-        case nameRu
-        case genres
-        case data = "premiereRu"
-        case posterURLPreview = "posterUrlPreview"
-    }
-    
+    let kinopoiskId: Int
+    let nameRu: String?
+    let nameEn: String?
+    let premiereRu: String
+    let posterUrl: String
+    let posterUrlPreview: String
+
 }
