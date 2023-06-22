@@ -7,10 +7,16 @@
 
 // MARK: - MainInteractorInput
 protocol MainInteractorInput: AnyObject {
-    func obtainFormattedString()
+    func obtainAwaitFilms()
+    func obtainTopRatedFilms()
+    func obtainPremieres()
+    func obtainPopularFilms()
 }
 
 // MARK: - MainInteractorOutput
 protocol MainInteractorOutput: AnyObject {
-    func didFinishObtainingFormattedString(_ string: String)
+    func didFinishObtainAwaitFilms(_ films: Films)
+    func didFinishObtainTopRatedFilms(_ films: Films)
+    func didFinishObtainPremieres(_ premieres: Premieres)
+    func didFinishObtainPopularFilms(_ films: Films)
 }

@@ -6,9 +6,7 @@
 //
 
 protocol MainRouterInput: AnyObject {
-    
 }
 
 protocol MainRouterOutput: AnyObject {
-    
 }

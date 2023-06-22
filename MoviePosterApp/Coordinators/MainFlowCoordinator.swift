@@ -31,7 +31,6 @@ final class MainFlowCoordinator: FlowCoordinatorProtocol {
     }
     
     func showMain() {
-        
     }
     
     func finish(animated: Bool, completion: (() -> Void)?) {

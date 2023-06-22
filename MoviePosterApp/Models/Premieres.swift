@@ -19,5 +19,4 @@ struct Premiere: Codable {
     let premiereRu: String
     let posterUrl: String
     let posterUrlPreview: String
-
 }

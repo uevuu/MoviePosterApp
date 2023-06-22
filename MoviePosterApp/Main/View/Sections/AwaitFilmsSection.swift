@@ -12,15 +12,20 @@ final class AwaitFilmsSection: Section {
     func layoutSection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(0.95),
-                heightDimension: .fractionalHeight(0.95)
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalHeight(1)
             )
         )
-        
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: 5,
+            leading: 5,
+            bottom: 5,
+            trailing: 5
+        )
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(0.45),
-                heightDimension: .fractionalWidth(0.666)
+                heightDimension: .fractionalWidth(0.639)
             ),
             repeatingSubitem: item,
             count: 1)
@@ -37,7 +42,12 @@ final class AwaitFilmsSection: Section {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
         section.boundarySupplementaryItems = [header]
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 10,
+            leading: 10,
+            bottom: 10,
+            trailing: 10
+        )
         return section
     }
 }

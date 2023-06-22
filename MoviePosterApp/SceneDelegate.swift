@@ -12,14 +12,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
-//        let serviceLocator = ServiceLocator()
-        let tabBarBuilder = TabBarBuilder()
+        let serviceLocator = ServiceLocator()
+        self.serviceLocator = serviceLocator
+        let tabBarBuilder = TabBarBuilder(resolver: serviceLocator.getResolver())
         window.rootViewController = tabBarBuilder.build()
         window.makeKeyAndVisible()
         self.window = window
-//        self.serviceLocator = serviceLocator
-//        self.rootCoordinator = RootCoordinator(window: window, resolver: serviceLocator.getResolver())
-//        rootCoordinator?.start(animated: true)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -10,4 +10,5 @@ target 'MoviePosterApp' do
 	pod 'SwiftLint', '~> 0.46.2'
 	pod 'Alamofire'
 	pod 'Swinject'
+	pod 'Kingfisher', '~> 7.0'
 end

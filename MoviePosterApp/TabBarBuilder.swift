@@ -6,13 +6,21 @@
 //
 
 import UIKit
+import Swinject
 
 final class TabBarBuilder {
+    private let resolver: Resolver
+    
+    init(resolver: Resolver) {
+        self.resolver = resolver
+    }
+    
     func build() -> UIViewController {
         let tabBar = UITabBarController()
-        tabBar.tabBar.barTintColor = .blue
+        tabBar.tabBar.barTintColor = UIColor(named: "AppBackground")
         tabBar.tabBar.tintColor = UIColor(named: "LightBlueColor")
-        let mainViewController = MainModuleBuilder.build()
+        let mainBuilder = MainModuleBuilder(resolver: resolver)
+        let mainViewController = mainBuilder.build()
         let favouriteViewController = UIViewController()
         favouriteViewController.view.backgroundColor = .blue
         let mainNavigationController = UINavigationController(rootViewController: mainViewController)

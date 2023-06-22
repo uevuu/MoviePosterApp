@@ -12,32 +12,33 @@ final class FilmsSelection: Section {
     func layoutSection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(0.95),
-                heightDimension: .fractionalHeight(0.95)
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalHeight(1)
             )
         )
         
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(0.4),
-                heightDimension: .fractionalHeight(0.24)
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalHeight(0.7)
             ),
             repeatingSubitem: item,
-            count: 1)
+            count: 1
+        )
         
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .estimated(44)
+                heightDimension: .absolute(44)
             ),
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top
         )
-        
+        header.pinToVisibleBounds = true
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
+        section.orthogonalScrollingBehavior = .groupPaging
         section.boundarySupplementaryItems = [header]
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0)
         return section
     }
 }

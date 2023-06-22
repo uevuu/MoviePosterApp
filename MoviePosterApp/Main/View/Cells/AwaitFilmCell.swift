@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import Kingfisher
+import Kingfisher
 
 // MARK: - AwaitFilmCell
 final class AwaitFilmCell: UICollectionViewCell {
@@ -68,6 +68,11 @@ final class AwaitFilmCell: UICollectionViewCell {
         }
     }
     
-    func configureCell(title: String, imageUrlString: String? ) {
+    func configureCell(imageUrlString: String, rating: String?) {
+        let url = URL(string: imageUrlString)
+        if let rating = rating {
+            awaitRatinLabel.text = rating
+        }
+        filmImageView.kf.setImage(with: url)
     }
 }

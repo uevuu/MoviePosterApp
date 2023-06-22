@@ -6,9 +6,7 @@
 //
 
 protocol MainPresenterInput: AnyObject {
-    
 }
 
 protocol MainPresenterOutput: AnyObject {
-    
 }
