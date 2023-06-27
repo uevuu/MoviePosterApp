@@ -12,6 +12,7 @@ import SnapKit
 final class MainViewController: UIViewController {
     // MARK: - Dependencies
     var output: MainViewOutput?
+    private weak var selectionHeader: FilmsSelectionHeader?
     
     // MARK: - Properties
     private lazy var collectionView = {
@@ -50,7 +51,8 @@ final class MainViewController: UIViewController {
     lazy var collectionViewLayout: UICollectionViewLayout = {
         let sections = output?.getSections()
         let layout = UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
-            return sections?[sectionIndex].layoutSection()
+            let layout = sections?[sectionIndex].layoutSection()
+            return layout
         }
         return layout
     }()
@@ -103,7 +105,13 @@ extension MainViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard let presenter = output else { return UICollectionViewCell() }
-        return presenter.catchCellCreation(collectionView, cellForItemAt: indexPath)
+        let cellReuseIdentifier = presenter.getReuseIdentifierForItemAt(indexPath: indexPath)
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: cellReuseIdentifier,
+            for: indexPath
+        )
+        presenter.configureCell(cell, at: indexPath)
+        return cell
     }
         
     func collectionView(
@@ -112,17 +120,62 @@ extension MainViewController: UICollectionViewDataSource {
         at indexPath: IndexPath
     ) -> UICollectionReusableView {
         guard let presenter = output else { return UICollectionReusableView() }
-        return presenter.catchHeaderCreation(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
+        let headerReuseIdentifier = presenter.getReuseIdentifierForHeader(indexPath: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: headerReuseIdentifier,
+            for: indexPath
+        )
+        
+        switch header {
+        case let filmsSelectionHeader as FilmsSelectionHeader:
+            filmsSelectionHeader.delegate = self
+            selectionHeader = filmsSelectionHeader
+        default:
+            break
+        }
+        return header
     }
 }
 
 // MARK: - UICollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        output?.startDisplaying(indexPath)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didEndDisplaying cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        output?.finishDisplaying(indexPath)
+    }
+}
+
+// MARK: - FilmsSelectionHeaderDelegate
+extension MainViewController: FilmsSelectionHeaderDelegate {
+    func swipeToSection(_ section: Int) {
+        output?.swipeSelectionTo(section: section)
+    }
 }
 
 // MARK: - MainViewInput
 extension MainViewController: MainViewInput {
     func reloadSection(at section: Int) {
         collectionView.reloadSections(IndexSet(integer: section))
+    }
+    
+    func swipeTo(indexPath: IndexPath) {
+        collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+        output?.selectionSwipped()
+    }
+    
+    func selectionHeaderScrollTo(_ type: BarSrollTo) {
+        selectionHeader?.barScrollTo(type)
     }
 }

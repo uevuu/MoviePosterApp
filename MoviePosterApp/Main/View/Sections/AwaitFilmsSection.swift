@@ -22,13 +22,13 @@ final class AwaitFilmsSection: Section {
             bottom: 5,
             trailing: 5
         )
-        let group = NSCollectionLayoutGroup.vertical(
+        let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(0.45),
                 heightDimension: .fractionalWidth(0.639)
             ),
-            repeatingSubitem: item,
-            count: 1)
+            subitems: [item]
+            )
         
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(

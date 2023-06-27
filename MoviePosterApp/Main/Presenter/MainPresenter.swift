@@ -9,17 +9,23 @@ import UIKit
 
 // MARK: - MainPresenter
 final class MainPresenter {
+    
     // MARK: - Dependencies
+    
     weak var view: MainViewInput?
-    var router: MainRouterInput
-    var interactor: MainInteractorInput
+    private var router: MainRouterInput
+    private var interactor: MainInteractorInput
     
     // MARK: - Properties
+    
     private var topAwaitFilms = Films(pagesCount: 0, films: [])
     private let sections: [Section] = [
         AwaitFilmsSection(),
         FilmsSelection()
     ]
+    private var startDisplay: Int?
+    private var finishDisplay: Int?
+    private var tappedInSectionHeader = false
     
     init(
         router: MainRouterInput,
@@ -67,69 +73,77 @@ extension MainPresenter: MainViewOutput {
         }
     }
     
-    func catchCellCreation(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
+    func getReuseIdentifierForItemAt(indexPath: IndexPath) -> String {
         switch indexPath.section {
         case 0:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: AwaitFilmCell.reuseIdentifier,
-                for: indexPath
-            ) as? AwaitFilmCell else {
-                fatalError("Error with getting AwaitFilmCell")
-            }
-            let film = topAwaitFilms.films[indexPath.item]
-            cell.configureCell(
-                imageUrlString: film
-                    .posterUrlPreview,
-                rating: film.rating
-            )
-            return cell
+            return AwaitFilmCell.reuseIdentifier
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: SelectionFilmCell.reuseIdentifier,
-                for: indexPath
-            ) as? SelectionFilmCell else {
-                fatalError("Error with getting SelectionFilmCell")
-            }
-            return cell
+            return SelectionFilmCell.reuseIdentifier
         default:
-            return UICollectionViewCell()
-        }
-    }
-        
-    func catchHeaderCreation(
-        _ collectionView: UICollectionView,
-        viewForSupplementaryElementOfKind kind: String,
-        at indexPath: IndexPath
-    ) -> UICollectionReusableView {
-        switch indexPath.section {
-        case 0:
-            guard let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: AwaitFilmsSectionHeader.reuseIdentifier,
-                for: indexPath
-            ) as? AwaitFilmsSectionHeader else {
-                fatalError("Error with getting AwaitFilmsSectionHeader")
-            }
-            return header
-        case 1:
-            guard let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: FilmsSelectionHeader.reuseIdentifier,
-                for: indexPath
-            ) as? FilmsSelectionHeader else {
-                fatalError("Error with getting FilmsSelectionHeader")
-            }
-            return header
-        default:
-            return UICollectionReusableView()
+            return "cell"
         }
     }
     
+    func getReuseIdentifierForHeader(indexPath: IndexPath) -> String {
+        switch indexPath.section {
+        case 0:
+            return AwaitFilmsSectionHeader.reuseIdentifier
+        case 1:
+            return FilmsSelectionHeader.reuseIdentifier
+        default:
+            return "header"
+        }
+    }
+    
+    func configureCell(_ cell: UICollectionViewCell, at indexPath: IndexPath) {
+        switch cell {
+        case let awaitFilmCell as AwaitFilmCell:
+            let film = topAwaitFilms.films[indexPath.item]
+            awaitFilmCell.configureCell(
+                imageUrlString: film.posterUrlPreview,
+                rating: film.rating
+            )
+        default:
+            break
+        }
+    }
+
     func getSections() -> [Section] {
         return sections
+    }
+    
+    func swipeSelectionTo(section: Int) {
+        print("swipeSelectionTo")
+        tappedInSectionHeader = true
+        view?.swipeTo(indexPath: IndexPath(item: section, section: 1))
+    }
+    
+    func startDisplaying(_ indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            startDisplay = indexPath.item
+        }
+    }
+    
+    func finishDisplaying(_ indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            finishDisplay = indexPath.item
+            if finishDisplay != startDisplay  && !tappedInSectionHeader {
+                switch startDisplay {
+                case 0:
+                    view?.selectionHeaderScrollTo(.premieres)
+                case 1:
+                    view?.selectionHeaderScrollTo(.topRated)
+                case 2:
+                    view?.selectionHeaderScrollTo(.popular)
+                default:
+                    break
+                }
+            }
+        }
+    }
+    func selectionSwipped() {
+        print("selectionSwipped")
+        tappedInSectionHeader = false
     }
 }
 

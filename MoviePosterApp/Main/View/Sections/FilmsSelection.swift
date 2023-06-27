@@ -17,13 +17,12 @@ final class FilmsSelection: Section {
             )
         )
         
-        let group = NSCollectionLayoutGroup.vertical(
+        let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
                 heightDimension: .fractionalHeight(0.7)
             ),
-            repeatingSubitem: item,
-            count: 1
+            subitems: [item]
         )
         
         let header = NSCollectionLayoutBoundarySupplementaryItem(

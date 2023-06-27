@@ -16,6 +16,7 @@ final class SelectionFilmCell: UICollectionViewCell {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(
             FilmCell.self,
             forCellWithReuseIdentifier: FilmCell.reuseIdentifier
@@ -88,8 +89,12 @@ final class SelectionFilmCell: UICollectionViewCell {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension SelectionFilmCell: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return 25
     }
     
@@ -107,25 +112,12 @@ extension SelectionFilmCell: UICollectionViewDataSource {
     }
 }
 
-final class FilmCell: UICollectionViewCell {
-    static let reuseIdentifier: String = "FilmCellReuseIdentifier"
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setup() {
-        contentView.backgroundColor = .black
-        contentView.clipsToBounds = true
-        contentView.layer.cornerRadius = 16
-        setConstraints()
-    }
-    
-    private func setConstraints() {
+// MARK: - UICollectionViewDelegate
+extension SelectionFilmCell: UICollectionViewDelegate {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        print("tap at film in selection")
     }
 }

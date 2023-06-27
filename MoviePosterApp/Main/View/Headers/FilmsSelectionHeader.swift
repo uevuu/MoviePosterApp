@@ -7,13 +7,24 @@
 
 import UIKit
 
+// MARK: - FilmsSelectionHeaderDelegate
+protocol FilmsSelectionHeaderDelegate: AnyObject {
+    func swipeToSection(_ section: Int)
+}
 // MARK: - FilmsSelectionHeader
 final class FilmsSelectionHeader: UICollectionReusableView {
     static let reuseIdentifier: String = "FilmsSelectionHeaderReuseIdentifier"
+    weak var delegate: FilmsSelectionHeaderDelegate?
     
     private lazy var bar: UIView = {
         let bar = UIView()
         bar.backgroundColor = .white
+        bar.frame = CGRect(
+            x: self.frame.width * 0.33 * 0.18,
+            y: self.frame.height - 4,
+            width: self.frame.width * 0.21,
+            height: 4
+        )
         bar.translatesAutoresizingMaskIntoConstraints = false
         return bar
     }()
@@ -31,7 +42,7 @@ final class FilmsSelectionHeader: UICollectionReusableView {
         fatalError("error")
     }
     
-    func setupView() {
+    private func setupView() {
         premieresButton.addTarget(self, action: #selector(premieresButtonTapped), for: .touchUpInside)
         topRatedButton.addTarget(self, action: #selector(topRatedButtonTapped), for: .touchUpInside)
         popularButton.addTarget(self, action: #selector(popularButtonButtonTapped), for: .touchUpInside)
@@ -43,27 +54,18 @@ final class FilmsSelectionHeader: UICollectionReusableView {
     }
     
     @objc private func premieresButtonTapped() {
-        let newX = premieresButton.frame.width * 0.18 + premieresButton.frame.minX
-        UIView.animate(withDuration: 0.3) {
-            self.bar.transform = CGAffineTransform(translationX: newX, y: 0)
-        }
+        delegate?.swipeToSection(0)
     }
     
     @objc private func topRatedButtonTapped() {
-        let newX = topRatedButton.frame.width * 0.18 + topRatedButton.frame.minX
-        UIView.animate(withDuration: 0.3) {
-            self.bar.transform = CGAffineTransform(translationX: newX, y: 0)
-        }
+        delegate?.swipeToSection(1)
     }
     
     @objc private func popularButtonButtonTapped() {
-        let newX = popularButton.frame.width * 0.18 + popularButton.frame.minX
-        UIView.animate(withDuration: 0.3) {
-            self.bar.transform = CGAffineTransform(translationX: newX, y: 0)
-        }
+        delegate?.swipeToSection(2)
     }
     
-    func setConstraints() {
+    private func setConstraints() {
         premieresButton.snp.makeConstraints { make in
             make.height.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.33)
@@ -79,47 +81,26 @@ final class FilmsSelectionHeader: UICollectionReusableView {
             make.width.equalToSuperview().multipliedBy(0.33)
             make.trailing.equalToSuperview()
         }
-        bar.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-            make.height.equalTo(4)
-            make.width.equalToSuperview().multipliedBy(0.21)
+    }
+    
+    func barScrollTo(_ type: BarSrollTo) {
+        var newX: CGFloat = 0.0
+        switch type {
+        case .premieres:
+            newX = premieresButton.frame.minX
+        case .topRated:
+            newX = topRatedButton.frame.minX
+        case .popular:
+            newX = popularButton.frame.minX
+        }
+        UIView.animate(withDuration: 0.3) {
+            self.bar.transform = CGAffineTransform(translationX: newX, y: 0)
         }
     }
 }
 
-// MARK: - RatingTypeButton
-final class RatingTypeButton: UIButton {    
-    private lazy var ratingTypeLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.white
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    init(title: String) {
-        super.init(frame: .zero)
-        ratingTypeLabel.text = title
-        setup()
-    }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setup() {
-        addSubview(ratingTypeLabel)
-        translatesAutoresizingMaskIntoConstraints = false
-        setConstraints()
-    }
-    
-    private func setConstraints() {
-        ratingTypeLabel.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-        }
-    }
+enum BarSrollTo {
+    case premieres
+    case topRated
+    case popular
 }
