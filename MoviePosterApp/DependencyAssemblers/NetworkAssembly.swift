@@ -12,5 +12,8 @@ final class NetworkAssembly: Assembly {
         container.register(MovieNetworkService.self) { _ in
             MovieNetworkService()
         }
+        container.register(FilmInfoService.self) { _ in
+            FilmInfoService()
+        }
     }
 }

@@ -19,14 +19,14 @@ final class TabBarBuilder {
         let tabBar = UITabBarController()
         tabBar.tabBar.barTintColor = UIColor(named: "AppBackground")
         tabBar.tabBar.tintColor = UIColor(named: "LightBlueColor")
+        
         let mainBuilder = MainModuleBuilder(resolver: resolver)
         let mainViewController = mainBuilder.build()
         let favouriteViewController = UIViewController()
         favouriteViewController.view.backgroundColor = .blue
-        let mainNavigationController = UINavigationController(rootViewController: mainViewController)
         let favouriteNavigationController = UINavigationController(rootViewController: favouriteViewController)
         tabBar.addViewController(
-            viewController: mainNavigationController,
+            viewController: mainViewController,
             title: "Home",
             image: UIImage(systemName: "house")
         )

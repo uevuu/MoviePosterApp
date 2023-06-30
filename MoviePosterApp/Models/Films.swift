@@ -14,11 +14,19 @@ struct Films: Codable {
 
 struct Film: Codable {
     let filmId: Int
-    let nameRu: String?
-    let nameEn: String?
-    let year: String?
-    let filmLength: String?
     let rating: String?
+    let posterUrlPreview: String
+}
+
+struct FilmInfo: Codable {
+    let kinopoiskId: Int
+    let nameRu: String?
+    let coverUrl: String?
+    let year: Int?
+    let filmLength: Int?
+    let description: String?
+    let ratingImdb: Double?
     let posterUrl: String
     let posterUrlPreview: String
+    let isTicketsAvailable: Bool
 }
