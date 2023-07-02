@@ -42,6 +42,20 @@ extension FilmInfoPresenter: FilmInfoInteractorOutput {
         filmStaff = staff
         view?.reloadSection(1)
     }
+    
+    func didFinishAddToWatchList() {
+        view?.makeBookmarkFill()
+    }
+    
+    func didFinishDeleteFromWatchList() {
+        view?.makeBookmarkUnfill()
+    }
+    
+    func didFinishCheckFilmStatus(isAdded: Bool) {
+        if isAdded {
+            view?.makeBookmarkFill()
+        }
+    }
 }
 
 // MARK: - FilmInfoViewOutput
@@ -49,6 +63,10 @@ extension FilmInfoPresenter: FilmInfoViewOutput {
     func viewDidLoadEvent() {
         interactor.obtainFilmInfo(selectedFilmId)
         interactor.obtainStaffFromFilm(selectedFilmId)
+    }
+    
+    func viewWillAppearEvent() {        
+        interactor.isFilmAddedToWatchList(filmId: Int(selectedFilmId) ?? 0)
     }
     
     func getReuseIdentifierForItemAt(indexPath: IndexPath) -> String {
@@ -119,6 +137,6 @@ extension FilmInfoPresenter: FilmInfoViewOutput {
     }
     
     func bookmarkButtonTapped() {
-        print("add to watch list")
+        interactor.changeFilmStatus(selectedFilmInfo)
     }
 }

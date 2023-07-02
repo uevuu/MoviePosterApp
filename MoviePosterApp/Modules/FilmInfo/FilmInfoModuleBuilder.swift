@@ -22,7 +22,10 @@ final class FilmInfoModuleBuilder {
     ) -> UIViewController {
         let viewController = FilmInfoViewController()
         let router = FilmInfoRouter(navigationController: navigationController)
-        let interactor = FilmInfoInteractor(filmInfoService: resolver.resolve())
+        let interactor = FilmInfoInteractor(
+            filmInfoService: resolver.resolve(),
+            watchListService: resolver.resolve()
+        )
         let presenter = FilmInfoPresenter(
             filmId: filmId,
             router: router,

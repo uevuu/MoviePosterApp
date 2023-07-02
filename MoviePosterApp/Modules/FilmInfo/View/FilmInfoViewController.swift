@@ -58,6 +58,11 @@ final class FilmInfoViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        output?.viewWillAppearEvent()
+    }
+    
     // MARK: - Setups
     
     private func setup() {
@@ -110,7 +115,18 @@ final class FilmInfoViewController: UIViewController {
 // MARK: - FilmInfoViewInput
 extension FilmInfoViewController: FilmInfoViewInput {
     func reloadSection(_ section: Int) {
-        collectionView.reloadSections(IndexSet(integer: section))
+        DispatchQueue.main.async { [weak collectionView] in
+            collectionView?.reloadSections(IndexSet(integer: section))
+        }
+    }
+    
+    func makeBookmarkUnfill() {
+        navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark")
+    }
+    
+    func makeBookmarkFill() {
+        print("make fill")
+        navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark.fill")
     }
 }
 

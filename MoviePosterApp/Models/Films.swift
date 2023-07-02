@@ -18,7 +18,7 @@ struct Film: Codable {
     let posterUrlPreview: String
 }
 
-struct FilmInfo: Codable {
+struct FilmInfo: Codable, Equatable {
     let kinopoiskId: Int
     let nameRu: String?
     let coverUrl: String?
@@ -29,4 +29,8 @@ struct FilmInfo: Codable {
     let posterUrl: String
     let posterUrlPreview: String
     let isTicketsAvailable: Bool
+    
+    static func == (lhs: FilmInfo, rhs: FilmInfo) -> Bool {
+        return lhs.kinopoiskId == rhs.kinopoiskId
+    }
 }

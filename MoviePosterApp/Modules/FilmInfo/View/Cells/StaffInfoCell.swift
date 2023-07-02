@@ -13,7 +13,7 @@ final class StaffInfoCell: UICollectionViewCell {
     
     private lazy var faceImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = contentView.frame.width / 2
         imageView.translatesAutoresizingMaskIntoConstraints = false

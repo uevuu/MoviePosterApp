@@ -8,9 +8,14 @@
 final class FilmInfoInteractor: FilmInfoInteractorInput {
     weak var output: FilmInfoInteractorOutput?
     private let filmInfoService: FilmInfoService
+    private let watchListService: WatchListService
     
-    init(filmInfoService: FilmInfoService) {
+    init(
+        filmInfoService: FilmInfoService,
+        watchListService: WatchListService
+    ) {
         self.filmInfoService = filmInfoService
+        self.watchListService = watchListService
     }
     
     func obtainFilmInfo(_ filmId: String) {
@@ -33,5 +38,22 @@ final class FilmInfoInteractor: FilmInfoInteractorInput {
                 print(error)
             }
         }
+    }
+    
+    func changeFilmStatus(_ filmInfo: FilmInfo?) {
+        if let film = filmInfo {
+            if watchListService.filmIsAdded(filmId: film.kinopoiskId) {
+                watchListService.deleteFilm(filmId: film.kinopoiskId)
+                output?.didFinishDeleteFromWatchList()
+            } else {
+                watchListService.saveFilm(filmInfo: film)
+                output?.didFinishAddToWatchList()
+            }
+        }
+    }
+    
+    func isFilmAddedToWatchList(filmId: Int) {
+        let isAdded = watchListService.filmIsAdded(filmId: filmId)
+        output?.didFinishCheckFilmStatus(isAdded: isAdded)
     }
 }

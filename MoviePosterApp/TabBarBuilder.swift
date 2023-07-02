@@ -22,16 +22,15 @@ final class TabBarBuilder {
         
         let mainBuilder = MainModuleBuilder(resolver: resolver)
         let mainViewController = mainBuilder.build()
-        let favouriteViewController = UIViewController()
-        favouriteViewController.view.backgroundColor = .blue
-        let favouriteNavigationController = UINavigationController(rootViewController: favouriteViewController)
+        let watchListBuilder = WatchListModuleBuilder(resolver: resolver)
+        let watchListController = watchListBuilder.build()
         tabBar.addViewController(
             viewController: mainViewController,
             title: "Home",
             image: UIImage(systemName: "house")
         )
         tabBar.addViewController(
-            viewController: favouriteNavigationController,
+            viewController: watchListController,
             title: "Watch list",
             image: UIImage(systemName: "bookmark")
         )

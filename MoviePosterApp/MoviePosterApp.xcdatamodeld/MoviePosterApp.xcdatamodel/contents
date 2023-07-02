@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E252" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FilmEntity" representedClassName=".FilmEntity" syncable="YES">
+        <attribute name="coverUrl" optional="YES" attributeType="String"/>
+        <attribute name="filmDescription" optional="YES" attributeType="String"/>
+        <attribute name="filmLength" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isTicketsAvailable" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="nameRu" optional="YES" attributeType="String"/>
+        <attribute name="posterUrl" attributeType="String"/>
+        <attribute name="posterUrlPreview" attributeType="String"/>
+        <attribute name="ratingImdb" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
 </model>

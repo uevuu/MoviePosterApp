@@ -10,6 +10,16 @@
 		3AF825BC56CD6CEF245F8F52 /* Pods_MoviePosterApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9B9FA24605B36C54591F4D /* Pods_MoviePosterApp.framework */; };
 		8B2B044B2A4EDB24006AFF21 /* StaffInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B044A2A4EDB24006AFF21 /* StaffInfoHeader.swift */; };
 		8B2B04522A4EFE10006AFF21 /* WatchListModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B04512A4EFE10006AFF21 /* WatchListModuleBuilder.swift */; };
+		8B2B04542A4F06CA006AFF21 /* WatchListInteractorIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B04532A4F06CA006AFF21 /* WatchListInteractorIO.swift */; };
+		8B2B04562A4F06D6006AFF21 /* WatchListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B04552A4F06D6006AFF21 /* WatchListInteractor.swift */; };
+		8B2B04592A4F06F1006AFF21 /* WatchListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B04582A4F06F0006AFF21 /* WatchListPresenter.swift */; };
+		8B2B045B2A4F06FF006AFF21 /* WatchListRouterI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B045A2A4F06FF006AFF21 /* WatchListRouterI.swift */; };
+		8B2B045D2A4F070B006AFF21 /* WatchListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B045C2A4F070B006AFF21 /* WatchListRouter.swift */; };
+		8B2B045F2A4F071E006AFF21 /* WatchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B045E2A4F071E006AFF21 /* WatchListViewController.swift */; };
+		8B2B04612A4F087F006AFF21 /* WatchListViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B04602A4F087F006AFF21 /* WatchListViewIO.swift */; };
+		8B2B04632A4F1074006AFF21 /* WatchListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B04622A4F1074006AFF21 /* WatchListService.swift */; };
+		8B2B04652A4F11D6006AFF21 /* CoreDataAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B04642A4F11D6006AFF21 /* CoreDataAssembly.swift */; };
+		8B2B04682A4F1BAA006AFF21 /* FilmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B04672A4F1BAA006AFF21 /* FilmTableViewCell.swift */; };
 		8B5A53662A35D375004B3F90 /* FlowCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A53652A35D375004B3F90 /* FlowCoordinatorProtocol.swift */; };
 		8B5A53682A35D438004B3F90 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A53672A35D438004B3F90 /* RootCoordinator.swift */; };
 		8B5A536A2A35D546004B3F90 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A53692A35D546004B3F90 /* TabBarCoordinator.swift */; };
@@ -24,6 +34,8 @@
 		8B5A53832A367F6F004B3F90 /* MainRouterI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A53822A367F6F004B3F90 /* MainRouterI.swift */; };
 		8B72CB8B29F2783F0083B3C3 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72CB8A29F2783F0083B3C3 /* ServiceLocator.swift */; };
 		8B72CB8E29F278660083B3C3 /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72CB8D29F278660083B3C3 /* NetworkAssembly.swift */; };
+		8B733FEC2A50EF8600992CD6 /* FilmEntity+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B733FEA2A50EF8600992CD6 /* FilmEntity+CoreDataClass copy.swift */; };
+		8B733FED2A50EF8600992CD6 /* FilmEntity+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B733FEB2A50EF8600992CD6 /* FilmEntity+CoreDataProperties copy.swift */; };
 		8B7DFD172A375365006E0755 /* MovieNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7DFD162A375365006E0755 /* MovieNetworkService.swift */; };
 		8B7DFD192A3758CF006E0755 /* Premieres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7DFD182A3758CF006E0755 /* Premieres.swift */; };
 		8B7DFD1C2A376A60006E0755 /* TabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7DFD1B2A376A60006E0755 /* TabBarBuilder.swift */; };
@@ -69,6 +81,16 @@
 		79D6C00D4EE11518FA909B38 /* Pods-MoviePosterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviePosterApp.release.xcconfig"; path = "Target Support Files/Pods-MoviePosterApp/Pods-MoviePosterApp.release.xcconfig"; sourceTree = "<group>"; };
 		8B2B044A2A4EDB24006AFF21 /* StaffInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffInfoHeader.swift; sourceTree = "<group>"; };
 		8B2B04512A4EFE10006AFF21 /* WatchListModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListModuleBuilder.swift; sourceTree = "<group>"; };
+		8B2B04532A4F06CA006AFF21 /* WatchListInteractorIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListInteractorIO.swift; sourceTree = "<group>"; };
+		8B2B04552A4F06D6006AFF21 /* WatchListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListInteractor.swift; sourceTree = "<group>"; };
+		8B2B04582A4F06F0006AFF21 /* WatchListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListPresenter.swift; sourceTree = "<group>"; };
+		8B2B045A2A4F06FF006AFF21 /* WatchListRouterI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListRouterI.swift; sourceTree = "<group>"; };
+		8B2B045C2A4F070B006AFF21 /* WatchListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListRouter.swift; sourceTree = "<group>"; };
+		8B2B045E2A4F071E006AFF21 /* WatchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListViewController.swift; sourceTree = "<group>"; };
+		8B2B04602A4F087F006AFF21 /* WatchListViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListViewIO.swift; sourceTree = "<group>"; };
+		8B2B04622A4F1074006AFF21 /* WatchListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListService.swift; sourceTree = "<group>"; };
+		8B2B04642A4F11D6006AFF21 /* CoreDataAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataAssembly.swift; sourceTree = "<group>"; };
+		8B2B04672A4F1BAA006AFF21 /* FilmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTableViewCell.swift; sourceTree = "<group>"; };
 		8B5A53652A35D375004B3F90 /* FlowCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		8B5A53672A35D438004B3F90 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		8B5A53692A35D546004B3F90 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -83,6 +105,8 @@
 		8B5A53822A367F6F004B3F90 /* MainRouterI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterI.swift; sourceTree = "<group>"; };
 		8B72CB8A29F2783F0083B3C3 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		8B72CB8D29F278660083B3C3 /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
+		8B733FEA2A50EF8600992CD6 /* FilmEntity+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilmEntity+CoreDataClass copy.swift"; sourceTree = "<group>"; };
+		8B733FEB2A50EF8600992CD6 /* FilmEntity+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilmEntity+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
 		8B7DFD162A375365006E0755 /* MovieNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNetworkService.swift; sourceTree = "<group>"; };
 		8B7DFD182A3758CF006E0755 /* Premieres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Premieres.swift; sourceTree = "<group>"; };
 		8B7DFD1B2A376A60006E0755 /* TabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBuilder.swift; sourceTree = "<group>"; };
@@ -168,6 +192,8 @@
 		8B2B044D2A4EFDD4006AFF21 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				8B2B04532A4F06CA006AFF21 /* WatchListInteractorIO.swift */,
+				8B2B04552A4F06D6006AFF21 /* WatchListInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -175,6 +201,7 @@
 		8B2B044E2A4EFDE1006AFF21 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				8B2B04582A4F06F0006AFF21 /* WatchListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -182,6 +209,9 @@
 		8B2B044F2A4EFDE7006AFF21 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8B2B04662A4F1B99006AFF21 /* Cell */,
+				8B2B04602A4F087F006AFF21 /* WatchListViewIO.swift */,
+				8B2B045E2A4F071E006AFF21 /* WatchListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -189,8 +219,18 @@
 		8B2B04502A4EFDED006AFF21 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				8B2B045A2A4F06FF006AFF21 /* WatchListRouterI.swift */,
+				8B2B045C2A4F070B006AFF21 /* WatchListRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		8B2B04662A4F1B99006AFF21 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8B2B04672A4F1BAA006AFF21 /* FilmTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8B5A53642A35D349004B3F90 /* Protocols */ = {
@@ -257,15 +297,18 @@
 			isa = PBXGroup;
 			children = (
 				8B72CB8D29F278660083B3C3 /* NetworkAssembly.swift */,
+				8B2B04642A4F11D6006AFF21 /* CoreDataAssembly.swift */,
 			);
 			path = DependencyAssemblers;
 			sourceTree = "<group>";
 		};
-		8B7DFD1A2A376A42006E0755 /* Favourite */ = {
+		8B733FDD2A50ED8100992CD6 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				8B733FEB2A50EF8600992CD6 /* FilmEntity+CoreDataProperties copy.swift */,
+				8B733FEA2A50EF8600992CD6 /* FilmEntity+CoreDataClass copy.swift */,
 			);
-			path = Favourite;
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		8B7ED98C2A4D7ACC007B7C2F /* Components */ = {
@@ -415,8 +458,8 @@
 		EACD674729A901FF0093883D /* MoviePosterApp */ = {
 			isa = PBXGroup;
 			children = (
+				8B733FDD2A50ED8100992CD6 /* CoreData */,
 				8BDFABED2A4CD70100C9131B /* Modules */,
-				8B7DFD1A2A376A42006E0755 /* Favourite */,
 				8B5A53642A35D349004B3F90 /* Protocols */,
 				8B72CB8C29F278560083B3C3 /* DependencyAssemblers */,
 				EACD676529A94DDD0093883D /* Coordinators */,
@@ -440,6 +483,7 @@
 			children = (
 				8B7DFD162A375365006E0755 /* MovieNetworkService.swift */,
 				8B7ED9902A4D8DD3007B7C2F /* FilmInfoService.swift */,
+				8B2B04622A4F1074006AFF21 /* WatchListService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -617,6 +661,9 @@
 				8BDFAC062A4CF00B00C9131B /* FilmMainInfoCell.swift in Sources */,
 				8B7DFD1C2A376A60006E0755 /* TabBarBuilder.swift in Sources */,
 				8BDFABFF2A4CDE6700C9131B /* FilmInfoRouter.swift in Sources */,
+				8B2B045D2A4F070B006AFF21 /* WatchListRouter.swift in Sources */,
+				8B2B045F2A4F071E006AFF21 /* WatchListViewController.swift in Sources */,
+				8B2B04562A4F06D6006AFF21 /* WatchListInteractor.swift in Sources */,
 				8B5A536A2A35D546004B3F90 /* TabBarCoordinator.swift in Sources */,
 				8B7ED9982A4E2AA9007B7C2F /* StaffInfoCell.swift in Sources */,
 				8B5A53662A35D375004B3F90 /* FlowCoordinatorProtocol.swift in Sources */,
@@ -630,9 +677,12 @@
 				8B7ED9912A4D8DD3007B7C2F /* FilmInfoService.swift in Sources */,
 				8B950EF62A3EF9AC00C7307C /* Section.swift in Sources */,
 				EACD675329A901FF0093883D /* MoviePosterApp.xcdatamodeld in Sources */,
+				8B2B04612A4F087F006AFF21 /* WatchListViewIO.swift in Sources */,
 				8B7ED9942A4E25B7007B7C2F /* Staff.swift in Sources */,
 				8B5A53772A35E23F004B3F90 /* MainModuleBuilder.swift in Sources */,
 				8B5A536C2A35D7E9004B3F90 /* MainFlowCoordinator.swift in Sources */,
+				8B2B04652A4F11D6006AFF21 /* CoreDataAssembly.swift in Sources */,
+				8B2B04632A4F1074006AFF21 /* WatchListService.swift in Sources */,
 				8B2B044B2A4EDB24006AFF21 /* StaffInfoHeader.swift in Sources */,
 				8BDFAC092A4CF03800C9131B /* FilmMainInfoSection.swift in Sources */,
 				8BDFABE72A4B1CE600C9131B /* FilmCell.swift in Sources */,
@@ -642,7 +692,9 @@
 				8BDFABEB2A4B41B200C9131B /* FilmInSelectionSection.swift in Sources */,
 				EACD674B29A901FF0093883D /* SceneDelegate.swift in Sources */,
 				8BDFABE92A4B2F1D00C9131B /* RatingTypeButton.swift in Sources */,
+				8B2B04592A4F06F1006AFF21 /* WatchListPresenter.swift in Sources */,
 				8B7DFD192A3758CF006E0755 /* Premieres.swift in Sources */,
+				8B733FED2A50EF8600992CD6 /* FilmEntity+CoreDataProperties copy.swift in Sources */,
 				8B72CB8B29F2783F0083B3C3 /* ServiceLocator.swift in Sources */,
 				8B5A53712A35E05F004B3F90 /* MainPresenter.swift in Sources */,
 				8BDFAC012A4CDF2100C9131B /* FilmInfoViewIO.swift in Sources */,
@@ -653,9 +705,13 @@
 				8B5A53732A35E171004B3F90 /* MainRouter.swift in Sources */,
 				8B5A53752A35E1E5004B3F90 /* MainInteractor.swift in Sources */,
 				8B950EFA2A3EFBAF00C7307C /* AwaitFilmsSectionHeader.swift in Sources */,
+				8B2B04542A4F06CA006AFF21 /* WatchListInteractorIO.swift in Sources */,
 				8BDFABF72A4CDCDE00C9131B /* FilmInfoInteractor.swift in Sources */,
 				8BDFABFD2A4CDE5D00C9131B /* FilmInfoRouterI.swift in Sources */,
+				8B733FEC2A50EF8600992CD6 /* FilmEntity+CoreDataClass copy.swift in Sources */,
+				8B2B04682A4F1BAA006AFF21 /* FilmTableViewCell.swift in Sources */,
 				8B5A53802A367E7D004B3F90 /* MainViewIO.swift in Sources */,
+				8B2B045B2A4F06FF006AFF21 /* WatchListRouterI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

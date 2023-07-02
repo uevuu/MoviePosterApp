@@ -13,7 +13,7 @@ final class FilmCell: UICollectionViewCell {
     
     private lazy var filmImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

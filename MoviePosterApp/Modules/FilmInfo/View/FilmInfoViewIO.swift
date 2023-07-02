@@ -10,11 +10,14 @@ import UIKit
 // MARK: - FilmInfoViewInput
 protocol FilmInfoViewInput: AnyObject {
     func reloadSection(_ section: Int)
+    func makeBookmarkUnfill()
+    func makeBookmarkFill()
 }
 
 // MARK: - FilmInfoViewOutput
 protocol FilmInfoViewOutput: AnyObject {
     func viewDidLoadEvent()
+    func viewWillAppearEvent()
     func getSections() -> [Section]
     func getSectionCount() -> Int
     func getNumberOfItemsInSection(at section: Int) -> Int

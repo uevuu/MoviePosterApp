@@ -10,6 +10,7 @@ enum InfoViewType {
     case year
     case length
     case tickectStatus
+    case rating
 }
 
 // MARK: - SecondaryInfoView
@@ -40,13 +41,14 @@ final class SecondaryInfoView: UIView {
             infoLabel.text = "? Минут"
         case .tickectStatus:
             imageView.image = UIImage(systemName: "ticket")
+        case .rating:
+            imageView.image = UIImage(systemName: "star")
+            imageView.tintColor = UIColor(named: "OrangeColor")
+            infoLabel.text = "--"
+            infoLabel.textColor = UIColor(named: "OrangeColor")
         }
         setup()
     }
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        setup()
-//    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -61,13 +63,12 @@ final class SecondaryInfoView: UIView {
     
     private func setConstraints() {
         imageView.snp.makeConstraints { make in
-            make.leading.top.equalToSuperview().offset(5)
-            make.bottom.equalToSuperview().inset(5)
+            make.top.leading.bottom.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
         infoLabel.snp.makeConstraints { make in
             make.leading.equalTo(imageView.snp.trailing).offset(5)
-            make.top.equalToSuperview().offset(5)
-            make.trailing.bottom.equalToSuperview().inset(5)
+            make.top.trailing.bottom.equalToSuperview()
         }
     }
     

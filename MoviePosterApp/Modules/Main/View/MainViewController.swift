@@ -176,11 +176,15 @@ extension MainViewController: FilmsSelectionHeaderDelegate {
 // MARK: - MainViewInput
 extension MainViewController: MainViewInput {
     func reloadSection(at section: Int) {
-        collectionView.reloadSections(IndexSet(integer: section))
+        DispatchQueue.main.async { [weak collectionView] in
+            collectionView?.reloadSections(IndexSet(integer: section))
+        }
     }
     
     func reloadSelection(at indexPath: IndexPath) {
-        collectionView.reloadItems(at: [indexPath])
+        DispatchQueue.main.async { [weak collectionView] in
+            collectionView?.reloadItems(at: [indexPath])
+        }
     }
     
     func swipeTo(indexPath: IndexPath) {

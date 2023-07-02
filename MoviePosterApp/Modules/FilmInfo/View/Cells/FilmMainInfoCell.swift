@@ -16,7 +16,7 @@ final class FilmMainInfoCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 16
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -25,7 +25,7 @@ final class FilmMainInfoCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 16
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -65,7 +65,7 @@ final class FilmMainInfoCell: UICollectionViewCell {
             secondSeparator,
             statusInfoLabel
         ])
-        stackView.spacing = 8
+        stackView.spacing = 10
         stackView.isHidden = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -129,15 +129,15 @@ final class FilmMainInfoCell: UICollectionViewCell {
             make.width.equalTo(2)
         }
         infoStackVIew.snp.makeConstraints { make in
-            make.top.equalTo(posterImageView.snp.bottom).offset(10).priority(.medium)
-            make.top.equalTo(titleLabel.snp.bottom).offset(15).priority(.high)
+            make.top.equalTo(posterImageView.snp.bottom).offset(20).priority(.medium)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20).priority(.high)
             make.centerX.equalToSuperview()
         }
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(infoStackVIew.snp.bottom).offset(10)
+            make.top.equalTo(infoStackVIew.snp.bottom).offset(15)
             make.leading.equalToSuperview().offset(25)
             make.trailing.equalToSuperview().inset(25)
-            make.bottom.equalToSuperview().inset(5)
+            make.bottom.equalToSuperview().inset(10)
         }
     }
     
