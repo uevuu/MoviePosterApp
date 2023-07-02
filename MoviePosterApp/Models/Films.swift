@@ -18,7 +18,7 @@ struct Film: Codable {
     let posterUrlPreview: String
 }
 
-struct FilmInfo: Codable, Equatable {
+struct FilmInfo: Codable, Equatable, Hashable {
     let kinopoiskId: Int
     let nameRu: String?
     let coverUrl: String?

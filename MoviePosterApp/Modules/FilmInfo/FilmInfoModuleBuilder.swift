@@ -17,14 +17,15 @@ final class FilmInfoModuleBuilder {
     }
     
     func build(
-        filmId: String,
+        filmId: Int,
         navigationController: UINavigationController?
     ) -> UIViewController {
         let viewController = FilmInfoViewController()
         let router = FilmInfoRouter(navigationController: navigationController)
         let interactor = FilmInfoInteractor(
             filmInfoService: resolver.resolve(),
-            watchListService: resolver.resolve()
+            watchListService: resolver.resolve(),
+            filmInfoLocalDataSource: resolver.resolve()
         )
         let presenter = FilmInfoPresenter(
             filmId: filmId,

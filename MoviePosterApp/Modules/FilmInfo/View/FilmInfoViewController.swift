@@ -125,7 +125,6 @@ extension FilmInfoViewController: FilmInfoViewInput {
     }
     
     func makeBookmarkFill() {
-        print("make fill")
         navigationItem.rightBarButtonItem?.image = UIImage(systemName: "bookmark.fill")
     }
 }

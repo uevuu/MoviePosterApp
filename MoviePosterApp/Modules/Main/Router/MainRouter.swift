@@ -24,7 +24,7 @@ final class MainRouter {
 
 // MARK: - MainRouterInput
 extension MainRouter: MainRouterInput {
-    func goToFilmModule(filmId: String) {
+    func goToFilmModule(filmId: Int) {
         let filmInfoBuilder = FilmInfoModuleBuilder(resolver: resolver)
         let filmInfoViewController = filmInfoBuilder.build(
             filmId: filmId,

@@ -7,5 +7,5 @@
 
 // MARK: - WatchListRouterInput
 protocol WatchListRouterInput: AnyObject {
-    func goToFilmModule(filmId: String)
+    func goToFilmModule(filmId: Int)
 }

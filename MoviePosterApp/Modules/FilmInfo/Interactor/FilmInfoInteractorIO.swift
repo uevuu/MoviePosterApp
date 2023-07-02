@@ -7,8 +7,8 @@
 
 // MARK: - FilmInfoInteractorInput
 protocol FilmInfoInteractorInput: AnyObject {
-    func obtainFilmInfo(_ filmId: String)
-    func obtainStaffFromFilm(_ filmId: String)
+    func obtainFilmInfo(_ filmId: Int)
+    func obtainStaffFromFilm(_ filmId: Int)
     func changeFilmStatus(_ filmInfo: FilmInfo?)
     func isFilmAddedToWatchList(filmId: Int)
 }

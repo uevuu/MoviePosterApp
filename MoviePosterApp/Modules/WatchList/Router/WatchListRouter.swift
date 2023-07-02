@@ -24,7 +24,15 @@ final class WatchListRouter {
 
 // MARK: - WatchListRouterInput
 extension WatchListRouter: WatchListRouterInput {
-    func goToFilmModule(filmId: String) {
-        print(filmId)
+    func goToFilmModule(filmId: Int) {
+        let filmInfoBuilder = FilmInfoModuleBuilder(resolver: resolver)
+        let filmInfoViewController = filmInfoBuilder.build(
+            filmId: filmId,
+            navigationController: navigationController
+        )
+        navigationController?.pushViewController(
+            filmInfoViewController,
+            animated: true
+        )
     }
 }

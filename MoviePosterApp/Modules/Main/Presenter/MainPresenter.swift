@@ -168,7 +168,7 @@ extension MainPresenter: MainViewOutput {
     }
     
     func selectItemAt(at indexPath: IndexPath) {
-        router.goToFilmModule(filmId: "\(topAwaitFilms.films[indexPath.item].filmId)")
+        router.goToFilmModule(filmId: topAwaitFilms.films[indexPath.item].filmId)
     }
 }
 
@@ -176,12 +176,12 @@ extension MainPresenter: SelectionFilmOutput {
     func showFilmInfoAt(at indexPath: IndexPath) {
         switch currDisplay {
         case 0:
-            router.goToFilmModule(filmId: "\(premiereFilms.items[indexPath.item].kinopoiskId)")
+            router.goToFilmModule(filmId: premiereFilms.items[indexPath.item].kinopoiskId)
         case 1:
-            router.goToFilmModule(filmId: "\(topRatedFilms.films[indexPath.item].filmId)")
+            router.goToFilmModule(filmId: topRatedFilms.films[indexPath.item].filmId)
 
         case 2:
-            router.goToFilmModule(filmId: "\(popularFilms.films[indexPath.item].filmId)")
+            router.goToFilmModule(filmId: popularFilms.films[indexPath.item].filmId)
         default:
             break
         }

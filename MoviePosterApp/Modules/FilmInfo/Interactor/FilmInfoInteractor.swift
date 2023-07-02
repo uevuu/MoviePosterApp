@@ -9,27 +9,35 @@ final class FilmInfoInteractor: FilmInfoInteractorInput {
     weak var output: FilmInfoInteractorOutput?
     private let filmInfoService: FilmInfoService
     private let watchListService: WatchListService
+    private let filmInfoLocalDataSource: FilmInfoLocalDataSource
     
     init(
         filmInfoService: FilmInfoService,
-        watchListService: WatchListService
+        watchListService: WatchListService,
+        filmInfoLocalDataSource: FilmInfoLocalDataSource
     ) {
         self.filmInfoService = filmInfoService
         self.watchListService = watchListService
+        self.filmInfoLocalDataSource = filmInfoLocalDataSource
     }
     
-    func obtainFilmInfo(_ filmId: String) {
-        filmInfoService.getFilmInfo(filmId: filmId) { [weak self] result in
-            switch result {
-            case .success(let filmInfo):
-                self?.output?.didFinishObtainFilmInfo(filmInfo)
-            case .failure(let error):
-                print(error)
+    func obtainFilmInfo(_ filmId: Int) {
+        if let filmInfo = filmInfoLocalDataSource.getFilm(with: filmId) {
+            output?.didFinishObtainFilmInfo(filmInfo)
+        } else {
+            filmInfoService.getFilmInfo(filmId: filmId) { [weak self] result in
+                switch result {
+                case .success(let filmInfo):
+                    self?.filmInfoLocalDataSource.cachedFilm(filmInfo)
+                    self?.output?.didFinishObtainFilmInfo(filmInfo)
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }
     
-    func obtainStaffFromFilm(_ filmId: String) {
+    func obtainStaffFromFilm(_ filmId: Int) {
         filmInfoService.getStaffFromFilm(filmId: filmId) { [weak self] result in
             switch result {
             case .success(let staff):

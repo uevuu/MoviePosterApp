@@ -36,14 +36,14 @@ final class NetworkApiService {
 final class FilmInfoService {
     private let networkService = NetworkApiService()
     
-    func getFilmInfo(filmId: String, completion: @escaping (Result<FilmInfo, Error>) -> Void) {
+    func getFilmInfo(filmId: Int, completion: @escaping (Result<FilmInfo, Error>) -> Void) {
         networkService.sendRequest(
             endpoint: "/api/v2.2/films/\(filmId)",
             completion: completion
         )
     }
     
-    func getStaffFromFilm(filmId: String, completion: @escaping (Result<[Staff], Error>) -> Void) {
+    func getStaffFromFilm(filmId: Int, completion: @escaping (Result<[Staff], Error>) -> Void) {
         networkService.sendRequest(
             endpoint: "/api/v1/staff",
             parameters: [

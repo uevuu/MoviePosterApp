@@ -7,5 +7,5 @@
 
 // MARK: - MainRouterInput
 protocol MainRouterInput: AnyObject {
-    func goToFilmModule(filmId: String)
+    func goToFilmModule(filmId: Int)
 }

@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - FilmInfoPresenter
 final class FilmInfoPresenter {
-    private let selectedFilmId: String
+    private let selectedFilmId: Int
     private var selectedFilmInfo: FilmInfo?
     private var filmStaff: [Staff]?
     weak var view: FilmInfoViewInput?
@@ -21,7 +21,7 @@ final class FilmInfoPresenter {
     private var interactor: FilmInfoInteractorInput
     
     init(
-        filmId: String,
+        filmId: Int,
         router: FilmInfoRouterInput,
         interactor: FilmInfoInteractorInput
     ) {
@@ -66,7 +66,7 @@ extension FilmInfoPresenter: FilmInfoViewOutput {
     }
     
     func viewWillAppearEvent() {        
-        interactor.isFilmAddedToWatchList(filmId: Int(selectedFilmId) ?? 0)
+        interactor.isFilmAddedToWatchList(filmId: selectedFilmId)
     }
     
     func getReuseIdentifierForItemAt(indexPath: IndexPath) -> String {

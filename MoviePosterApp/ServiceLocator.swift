@@ -20,7 +20,8 @@ final class ServiceLocator: ServiceLocatorProtocol {
         self.assembler = Assembler(
             [
                 NetworkAssembly(),
-                CoreDataAssembly()
+                CoreDataAssembly(),
+                LocalDataSourceAssembly()
             ],
             container: container
         )

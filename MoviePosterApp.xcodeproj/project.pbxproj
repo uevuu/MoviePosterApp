@@ -36,6 +36,8 @@
 		8B72CB8E29F278660083B3C3 /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72CB8D29F278660083B3C3 /* NetworkAssembly.swift */; };
 		8B733FEC2A50EF8600992CD6 /* FilmEntity+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B733FEA2A50EF8600992CD6 /* FilmEntity+CoreDataClass copy.swift */; };
 		8B733FED2A50EF8600992CD6 /* FilmEntity+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B733FEB2A50EF8600992CD6 /* FilmEntity+CoreDataProperties copy.swift */; };
+		8B733FEF2A51939000992CD6 /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B733FEE2A51939000992CD6 /* LocalDataSource.swift */; };
+		8B733FF12A5193C500992CD6 /* FilmInfoLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B733FF02A5193C500992CD6 /* FilmInfoLocalDataSource.swift */; };
 		8B7DFD172A375365006E0755 /* MovieNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7DFD162A375365006E0755 /* MovieNetworkService.swift */; };
 		8B7DFD192A3758CF006E0755 /* Premieres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7DFD182A3758CF006E0755 /* Premieres.swift */; };
 		8B7DFD1C2A376A60006E0755 /* TabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7DFD1B2A376A60006E0755 /* TabBarBuilder.swift */; };
@@ -107,6 +109,8 @@
 		8B72CB8D29F278660083B3C3 /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
 		8B733FEA2A50EF8600992CD6 /* FilmEntity+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilmEntity+CoreDataClass copy.swift"; sourceTree = "<group>"; };
 		8B733FEB2A50EF8600992CD6 /* FilmEntity+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilmEntity+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		8B733FEE2A51939000992CD6 /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
+		8B733FF02A5193C500992CD6 /* FilmInfoLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmInfoLocalDataSource.swift; sourceTree = "<group>"; };
 		8B7DFD162A375365006E0755 /* MovieNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNetworkService.swift; sourceTree = "<group>"; };
 		8B7DFD182A3758CF006E0755 /* Premieres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Premieres.swift; sourceTree = "<group>"; };
 		8B7DFD1B2A376A60006E0755 /* TabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBuilder.swift; sourceTree = "<group>"; };
@@ -298,6 +302,7 @@
 			children = (
 				8B72CB8D29F278660083B3C3 /* NetworkAssembly.swift */,
 				8B2B04642A4F11D6006AFF21 /* CoreDataAssembly.swift */,
+				8B733FEE2A51939000992CD6 /* LocalDataSource.swift */,
 			);
 			path = DependencyAssemblers;
 			sourceTree = "<group>";
@@ -483,6 +488,7 @@
 			children = (
 				8B7DFD162A375365006E0755 /* MovieNetworkService.swift */,
 				8B7ED9902A4D8DD3007B7C2F /* FilmInfoService.swift */,
+				8B733FF02A5193C500992CD6 /* FilmInfoLocalDataSource.swift */,
 				8B2B04622A4F1074006AFF21 /* WatchListService.swift */,
 			);
 			path = Services;
@@ -655,6 +661,7 @@
 				8B950F072A3FB26600C7307C /* SearchButton.swift in Sources */,
 				8BDFABF52A4CD77200C9131B /* FilmInfoModuleBuilder.swift in Sources */,
 				8B8CF4232A42164100AED61C /* Resolver+Extensions.swift in Sources */,
+				8B733FEF2A51939000992CD6 /* LocalDataSource.swift in Sources */,
 				8B7ED9962A4E2965007B7C2F /* StaffInfoSection.swift in Sources */,
 				8B5A536F2A35DFF8004B3F90 /* MainViewController.swift in Sources */,
 				8B5A53682A35D438004B3F90 /* RootCoordinator.swift in Sources */,
@@ -680,6 +687,7 @@
 				8B2B04612A4F087F006AFF21 /* WatchListViewIO.swift in Sources */,
 				8B7ED9942A4E25B7007B7C2F /* Staff.swift in Sources */,
 				8B5A53772A35E23F004B3F90 /* MainModuleBuilder.swift in Sources */,
+				8B733FF12A5193C500992CD6 /* FilmInfoLocalDataSource.swift in Sources */,
 				8B5A536C2A35D7E9004B3F90 /* MainFlowCoordinator.swift in Sources */,
 				8B2B04652A4F11D6006AFF21 /* CoreDataAssembly.swift in Sources */,
 				8B2B04632A4F1074006AFF21 /* WatchListService.swift in Sources */,

@@ -66,6 +66,6 @@ extension WatchListPresenter: WatchListViewOutput {
     }
     
     func selectFilm(at indexPath: IndexPath) {
-        router.goToFilmModule(filmId: "\( markedFilms[indexPath.item].kinopoiskId)")
+        router.goToFilmModule(filmId: markedFilms[indexPath.item].kinopoiskId)
     }
 }
