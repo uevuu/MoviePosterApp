@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - FilmInfoLocalDataSource
 final class FilmInfoLocalDataSource {
     private var films: Set<FilmInfo> = Set()
     
@@ -15,6 +16,6 @@ final class FilmInfoLocalDataSource {
     }
     
     func getFilm(with filmId: Int) -> FilmInfo? {
-        return films.first(where: { $0.kinopoiskId == filmId })
+        return films.first { $0.kinopoiskId == filmId }
     }
 }

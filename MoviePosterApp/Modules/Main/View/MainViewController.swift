@@ -133,6 +133,8 @@ extension MainViewController: UICollectionViewDataSource {
         case let filmsSelectionHeader as FilmsSelectionHeader:
             filmsSelectionHeader.delegate = self
             selectionHeader = filmsSelectionHeader
+        case let awaitSelectionHeader as AwaitFilmsSectionHeader:
+            awaitSelectionHeader.delegate = self
         default:
             break
         }
@@ -163,6 +165,13 @@ extension MainViewController: UICollectionViewDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         output?.selectItemAt(at: indexPath)
+    }
+}
+
+// MARK: - AwaitFilmsSectionHeaderDelegate
+extension MainViewController: AwaitFilmsSectionHeaderDelegate {
+    func searchButtonTapped() {
+        output?.searchButtonTapped()
     }
 }
 

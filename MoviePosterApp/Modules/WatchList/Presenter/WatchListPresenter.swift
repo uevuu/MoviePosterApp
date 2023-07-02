@@ -59,7 +59,18 @@ extension WatchListPresenter: WatchListViewOutput {
     func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
         switch cell {
         case let filmCell as FilmTableViewCell:
-            filmCell.configureCell(filmInfo: markedFilms[indexPath.item])
+            let filmInfo = markedFilms[indexPath.item]
+            let dataForCell = FilmDataForCell(
+                title: filmInfo.nameRu ?? "Без названия",
+                posterUrlPreview: filmInfo.posterUrlPreview,
+                // swiftlint:disable force_unwrapping
+                year: filmInfo.year != nil ? String(filmInfo.year!) : "----",
+                rating: filmInfo.ratingImdb != nil ? String(filmInfo.ratingImdb!) : "--",
+                filmLength: filmInfo.filmLength != nil ? "\(filmInfo.filmLength!) Минут" : "? Минут",
+                // swiftlint:enable force_unwrapping
+                isTicketsAvailable: filmInfo.isTicketsAvailable
+            )
+            filmCell.configureCell(dataForCell: dataForCell)
         default:
             break
         }

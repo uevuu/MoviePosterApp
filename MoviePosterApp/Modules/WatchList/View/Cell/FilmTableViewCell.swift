@@ -82,25 +82,32 @@ final class FilmTableViewCell: UITableViewCell {
         }
     }
     
-    func configureCell(filmInfo: FilmInfo) {
-        posterImageView.kf.setImage(with: URL(string: filmInfo.posterUrlPreview))
-        titleLabel.text = filmInfo.nameRu ?? "Без названия"
-        if let rating = filmInfo.ratingImdb {
-            ratingInfoLabel.setData("\(rating)")
-        } else {
-            ratingInfoLabel.setData("--")
-        }
-        if let year = filmInfo.year {
-            yearInfoLabel.setData("\(year)")
-        }
-        if let filmLength = filmInfo.filmLength {
-            lengthInfoLabel.setData("\(filmLength) Минут")
-        }
+    func configureCell(dataForCell: FilmDataForCell) {
+        posterImageView.kf.setImage(with: URL(string: dataForCell.posterUrlPreview))
+        titleLabel.text = dataForCell.title
+        ratingInfoLabel.setData(dataForCell.rating)
+        yearInfoLabel.setData(dataForCell.year)
+        lengthInfoLabel.setData(dataForCell.filmLength)
+        ratingInfoLabel.setData(dataForCell.rating)
+        ratingInfoLabel.setData(dataForCell.rating)
         
-        if filmInfo.isTicketsAvailable {
-            statusInfoLabel.setData("Доступны")
+        if let status = dataForCell.isTicketsAvailable {
+            if status {
+                statusInfoLabel.setData("Доступны")
+            } else {
+                statusInfoLabel.setData("Недоступны")
+            }
         } else {
-            statusInfoLabel.setData("Недоступны")
+            statusInfoLabel.isHidden = true
         }
     }
+}
+
+struct FilmDataForCell {
+    let title: String
+    let posterUrlPreview: String
+    let year: String
+    let rating: String
+    let filmLength: String
+    let isTicketsAvailable: Bool?
 }

@@ -18,5 +18,10 @@ final class NetworkAssembly: Assembly {
             FilmInfoService()
         }
         .inObjectScope(.container)
+        
+        container.register(FilmSearchService.self) { _ in
+            FilmSearchService()
+        }
+        .inObjectScope(.container)
     }
 }

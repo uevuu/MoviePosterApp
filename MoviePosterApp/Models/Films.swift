@@ -34,3 +34,17 @@ struct FilmInfo: Codable, Equatable, Hashable {
         return lhs.kinopoiskId == rhs.kinopoiskId
     }
 }
+
+struct FilmByKeyword: Codable {
+    let filmId: Int
+    let nameRu: String?
+    let year: String?
+    let rating: String?
+    let filmLength: String?
+    let posterUrlPreview: String
+}
+
+struct KeyWordSearchResult: Codable {
+    let pagesCount: Int
+    let films: [FilmByKeyword]
+}

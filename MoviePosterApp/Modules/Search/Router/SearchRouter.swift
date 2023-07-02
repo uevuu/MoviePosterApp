@@ -1,29 +1,33 @@
 //
-//  MainRouter.swift
+//  SearchRouter.swift
 //  MoviePosterApp
 //
-//  Created by Nikita Marin on 11.06.2023.
+//  Created by Nikita Marin on 02.07.2023.
 //
 
 import UIKit
 import Swinject
 
-// MARK: - MainRouter
-final class MainRouter {
+// MARK: - SearchRouter
+final class SearchRouter {
     private let resolver: Resolver
     private weak var navigationController: UINavigationController?
     
     init(
         resolver: Resolver,
-        navigationController: UINavigationController
+        navigationController: UINavigationController?
     ) {
         self.resolver = resolver
         self.navigationController = navigationController
     }
 }
 
-// MARK: - MainRouterInput
-extension MainRouter: MainRouterInput {
+// MARK: - SearchRouterInput
+extension SearchRouter: SearchRouterInput {
+    func goToPreviousModule() {
+        navigationController?.popViewController(animated: false)
+    }
+    
     func goToFilmModule(filmId: Int) {
         let filmInfoBuilder = FilmInfoModuleBuilder(resolver: resolver)
         let filmInfoViewController = filmInfoBuilder.build(
@@ -33,15 +37,6 @@ extension MainRouter: MainRouterInput {
         navigationController?.pushViewController(
             filmInfoViewController,
             animated: true
-        )
-    }
-    
-    func goToSearchModule() {
-        let searchBuilder = SearchModuleBuilder(resolver: resolver)
-        let searchViewController = searchBuilder.build(navigationController: navigationController)
-        navigationController?.pushViewController(
-            searchViewController,
-            animated: false
         )
     }
 }

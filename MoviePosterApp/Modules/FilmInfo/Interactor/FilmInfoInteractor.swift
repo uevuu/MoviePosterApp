@@ -24,6 +24,9 @@ final class FilmInfoInteractor: FilmInfoInteractorInput {
     func obtainFilmInfo(_ filmId: Int) {
         if let filmInfo = filmInfoLocalDataSource.getFilm(with: filmId) {
             output?.didFinishObtainFilmInfo(filmInfo)
+        } else if let filmInfo = watchListService.getFilm(with: filmId) {
+            output?.didFinishObtainFilmInfo(filmInfo)
+            filmInfoLocalDataSource.cachedFilm(filmInfo)
         } else {
             filmInfoService.getFilmInfo(filmId: filmId) { [weak self] result in
                 switch result {

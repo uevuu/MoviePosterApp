@@ -27,4 +27,5 @@ protocol MainViewOutput: AnyObject {
     func startDisplaying(_ indexPath: IndexPath)
     func finishDisplaying(_ indexPath: IndexPath)
     func selectItemAt(at indexPath: IndexPath)
+    func searchButtonTapped()
 }

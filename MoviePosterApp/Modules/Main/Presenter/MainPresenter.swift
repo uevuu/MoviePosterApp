@@ -170,6 +170,10 @@ extension MainPresenter: MainViewOutput {
     func selectItemAt(at indexPath: IndexPath) {
         router.goToFilmModule(filmId: topAwaitFilms.films[indexPath.item].filmId)
     }
+    
+    func searchButtonTapped() {
+        router.goToSearchModule()
+    }
 }
 
 extension MainPresenter: SelectionFilmOutput {

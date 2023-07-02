@@ -7,9 +7,15 @@
 
 import UIKit
 
+// MARK: - AwaitFilmsSectionHeaderDelegate
+protocol AwaitFilmsSectionHeaderDelegate: AnyObject {
+    func searchButtonTapped()
+}
+
 // MARK: - AwaitFilmsSectionHeader
 final class AwaitFilmsSectionHeader: UICollectionReusableView {
     static let reuseIdentifier: String = "AwaitFilmsSectionHeaderReuseIdentifier"
+    weak var delegate: AwaitFilmsSectionHeaderDelegate?
     
     private lazy var headerLabel: UILabel = {
         let label = UILabel()
@@ -25,14 +31,15 @@ final class AwaitFilmsSectionHeader: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        setup()
     }
     
     required init?(coder: NSCoder) {
         fatalError("error")
     }
     
-    func setupView() {
+    func setup() {
+        searchButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         addSubview(headerLabel)
         addSubview(searchButton)
         setConstraints()
@@ -48,5 +55,9 @@ final class AwaitFilmsSectionHeader: UICollectionReusableView {
             make.height.equalTo(42)
             make.trailing.bottom.equalToSuperview().inset(12)
         }
+    }
+    
+    @objc private func buttonTapped() {
+        delegate?.searchButtonTapped()
     }
 }

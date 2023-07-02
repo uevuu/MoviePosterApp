@@ -7,6 +7,7 @@
 
 import CoreData
 
+// MARK: - WatchListService
 final class WatchListService {
     private lazy var context = persistentContainer.viewContext
     lazy var persistentContainer: NSPersistentContainer = {
@@ -27,6 +28,19 @@ final class WatchListService {
         } catch {
             print("Failed to fetch films: \(error)")
             return []
+        }
+    }
+    
+    func getFilm(with filmId: Int) -> FilmInfo? {
+        let fetchRequest: NSFetchRequest<FilmEntity> = FilmEntity.fetchRequest()
+        do {
+            if let savedFilm = try context.fetch(fetchRequest).first(where: { $0.id == filmId }) {
+                return convertEntityToFilmInfo(savedFilm)
+            }
+            return nil
+        } catch {
+            print("Failed to fetch film: \(error)")
+            return nil
         }
     }
     
@@ -87,7 +101,7 @@ final class WatchListService {
             coverUrl: savedFilm.coverUrl,
             year: Int(savedFilm.year) != -1 ? Int(savedFilm.year) : nil,
             filmLength: Int(savedFilm.filmLength) != -1 ? Int(savedFilm.filmLength) : nil,
-            description: savedFilm.description,
+            description: savedFilm.filmDescription,
             ratingImdb: Int(savedFilm.ratingImdb) != -1 ? savedFilm.ratingImdb : nil,
             posterUrl: savedFilm.posterUrl,
             posterUrlPreview: savedFilm.posterUrlPreview,
